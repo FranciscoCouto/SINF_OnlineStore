@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+
+<body>
+    <!-- start Contact-page -->
+    <!-- content-section-starts -->
+    <br />
+    <div class="container">
+        <h1>Faturas de: @ViewBag.Nome</h1>
+    </div>
+    <br />
+    <br />
+    <div class="container">
+ 
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID Fatura</th>
+                    <th>Preço Final</th>
+                    <th>Estado</th>
+                    <th>Pagamento</th>
+                </tr>
+            </thead>
+            <tbody>
+@foreach (var encomenda in ViewBag.Encomendas)
+                {
+                <tr>
+                    <td>@encomenda.id</td>
+                    <td>@encomenda.PrecoFinal €</td>
+                    <td>@encomenda.estado</td>
+                    <td>@encomenda.DataLiq</td>
+                </tr>
+}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- content-section-ends -->
+    <!-- Scripts -->
+    <script src="~/Scripts/auxx.js"></script>
+    <script src="~/Scripts/soma.js"></script>
+
+</body>
+</html>
+

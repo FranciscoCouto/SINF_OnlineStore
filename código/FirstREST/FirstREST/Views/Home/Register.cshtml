@@ -1,0 +1,66 @@
+﻿<html>
+<body>
+    <div class="container">
+        <form class="form-signin" action='/Home/POST/Register' method='POST'>
+
+            <div class="form-group">
+                <label for="InputName">Insira o seu nome</label>
+                <div class="input-group" style="min-width:350px;">
+                    @Html.TextBox("Username", "", new { type = "text", name = "InputName", id = "InputName", Class = "form-control", placeholder = "Insira o seu nome!" })
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="InputEmail">Insira E-mail</label>
+                <div class="input-group" style="min-width:350px;">
+                    @Html.TextBox("Email", "", new { type = "email", name = "InputEmail", id = "InputEmail", Class = "form-control", placeholder = "Insira o seu E-mail!" })
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="InputEmail">Insira o seu contribuinte</label>
+                <div class="input-group" style="min-width:350px;">
+                    @Html.TextBox("InputContribuinte", "", new { type = "password", name = "InputContribuinte", id = "InputContribuinte", Class = "form-control", placeholder = "Insira o seu contribuinte!" })
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="InputEmail">Insira a sua Morada</label>
+                <div class="input-group" style="min-width:350px;">
+                    @Html.TextBox("InputMorada", "", new { type = "text", name = "InputMorada", id = "InputMorada", Class = "form-control", placeholder = "Insira a sua Morada!" })
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="InputEmail">Insira o seu telefone</label>
+                <div class="input-group" style="min-width:350px;">
+                    @Html.TextBox("InputTelefone", "", new { type = "text", name = "InputTelefone", id = "InputTelefone", Class = "form-control", placeholder = "Insira o seu Telefone!" })
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="InputEmail">Insira Password</label>
+                <div class="input-group" style="min-width:350px;">
+                    @Html.TextBox("InputPassword", "", new { type = "password", name = "InputPassword", id = "InputPassword", Class = "form-control", placeholder = "Insira a sua password!" })
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="InputEmail">Confirme a sua Password</label>
+                <div class="input-group" style="min-width:350px;">
+                    @Html.TextBox("InputPassword2", "", new { type = "password", name = "InputPassword", id = "InputPassword2", Class = "form-control", placeholder = "Confirme a sua password!" })
+
+                </div>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" style="min-width:350px;">Registar!</button>
+        </form>
+    </div>
+    <div class="container">
+        <div class="recommand-section">
+            <div class="recommand-section-head text-center">
+            </div>
+        </div>
+    </div>
+  
+</body>
+</html>

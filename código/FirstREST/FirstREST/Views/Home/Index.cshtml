@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+    <!-- header-section-starts -->
+    <div class="header">
+        <div class="banner">
+            <div>
+
+                <div class="container">
+
+                    @{
+
+                        if (Session["Username"] == null)
+                        {
+                            <div class="sign-up2">
+                                <a href="/Home/Register">Sign Up</a>
+                            </div>
+
+                            <div class="sign-in1">
+                                <a href="/Home/Login">Sign In</a>
+                            </div>
+
+                        }
+
+                        else
+                        {
+                            <div class="sign-in1">
+                                <a href="/Home/Logout">Logout @Session["name"]</a>
+                            </div>
+                        }
+                    }
+
+                    <div class="clearfix"></div>
+                </div>
+                </div>
+
+    <div class="banner-info text-center">
+        <i class="shipping"></i>
+        <h3>Loja Online do Primavera</h3>
+        <br /><br /><br />
+        <a href="/Home/Artigos">All Products</a>
+    </div>
+    </div>
+    </div>
+
+    <div class="container">
+        <div class="recommand-section">
+            <div class="recommand-section-head text-center">
+                <h3><span>Mais</span> Recentes</h3>
+                <p>Os produtos mais recentes no mercado!</p>
+            </div>
+            <div class="recommand-section-grids">
+                <div class="standards">
+                    <div class="standard_content">
+                        <!-- 1st product -->
+                        <div class="tag-grid" style="max-height: 320px">
+                            <div class="portfolio app mix_all" data-cat="app" style="display: inline-block; opacity: 1;">
+                                <div class="portfolio-wrapper">
+                                    <a href="/Home/Artigos/@((ViewBag.top as IEnumerable<FirstREST.Lib_Primavera.Model.Artigo>).ElementAt(0).ID)" class="b-link-stripe b-animate-go  thickbox">
+                                        <img src="~/Content/site/images/products/@((ViewBag.top as IEnumerable<FirstREST.Lib_Primavera.Model.Artigo>).ElementAt(0).CDU_Imagem)" class="img-responsive" alt=""
+                                             style="max-height: 210px; margin-left:2em" />
+                                    </a>
+                                    <div class="r-title">
+                                        <h3>@((ViewBag.top as IEnumerable<FirstREST.Lib_Primavera.Model.Artigo>).ElementAt(0).Nome)</h3>
+                                        <h4>@((ViewBag.top as IEnumerable<FirstREST.Lib_Primavera.Model.Artigo>).ElementAt(0).Preço)€</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 2nd product -->
+                        <div class="tag-grid" style="max-height: 320px">
+                            <div class="portfolio app mix_all" data-cat="app" style="display: inline-block; opacity: 1;">
+                                <div class="portfolio-wrapper">
+                                    <a href="/Home/Artigos/@((ViewBag.top as IEnumerable<FirstREST.Lib_Primavera.Model.Artigo>).ElementAt(1).ID)" class="b-link-stripe b-animate-go  thickbox">
+                                        <img src="~/Content/site/images/products/@((ViewBag.top as IEnumerable<FirstREST.Lib_Primavera.Model.Artigo>).ElementAt(1).CDU_Imagem)" class="img-responsive" alt=""
+                                             style="max-height: 210px; margin-left:2em"  />
+                                    </a>
+                                    <div class="r-title">
+                                        <h3>@((ViewBag.top as IEnumerable<FirstREST.Lib_Primavera.Model.Artigo>).ElementAt(1).Nome)</h3>
+                                        <h4>@((ViewBag.top as IEnumerable<FirstREST.Lib_Primavera.Model.Artigo>).ElementAt(1).Preço)€</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 3rd product -->
+                        <div class="tag-grid" style="max-height: 320px">
+                            <div class="portfolio app mix_all" data-cat="app" style="display: inline-block; opacity: 1;">
+                                <div class="portfolio-wrapper">
+                                    <a href="/Home/Artigos/@((ViewBag.top as IEnumerable<FirstREST.Lib_Primavera.Model.Artigo>).ElementAt(2).ID)" class="b-link-stripe b-animate-go  thickbox">
+                                        <img src="~/Content/site/images/products/@((ViewBag.top as IEnumerable<FirstREST.Lib_Primavera.Model.Artigo>).ElementAt(2).CDU_Imagem)" class="img-responsive" alt=""
+                                             style="max-height: 210px; margin-left:2em" />
+                                    </a>
+                                    <div class="r-title">
+                                        <h3>@((ViewBag.top as IEnumerable<FirstREST.Lib_Primavera.Model.Artigo>).ElementAt(2).Nome)</h3>
+                                        <h4>@((ViewBag.top as IEnumerable<FirstREST.Lib_Primavera.Model.Artigo>).ElementAt(2).Preço)€</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

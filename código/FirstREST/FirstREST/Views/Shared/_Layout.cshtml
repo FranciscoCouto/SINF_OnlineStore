@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Primavera Online Store</title>
+    <link href="/Content/site/css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link href="/Content/site/css/cart.css" rel='stylesheet' type='text/css' />
+    <link href="/Content/site/css/signin.css" rel='stylesheet' type='text/css' />
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/Content/site/js/jquery.min.js"></script>
+    <!-- Custom Theme files -->
+    <link href="/Content/site/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/Content/site/css/form.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/Content/site/css/coments.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- Custom Theme files -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!--webfont-->
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <!-- dropdown -->
+    <script src="/Content/site/js/jquery.easydropdown.js"></script>
+    <link href="/Content/site/css/nav.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="/Content/site/css/etalage.css">
+    <script src="/Content/site/js/jquery.etalage.min.js"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            $('#etalage').etalage({
+                thumb_image_width: 300,
+                thumb_image_height: 400,
+                source_image_width: 800,
+                source_image_height: 1000,
+                show_hint: true,
+                click_callback: function (image_anchor, instance_id) {
+                    alert('Callback example:\nYou clicked on an image with the anchor: "' + image_anchor + '"\n(in Etalage instance: "' + instance_id + '")');
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1200);
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- header-section-starts -->
+    <div class="c-header" id="home">
+        <div class="top-header">
+            <div class="container">
+                <div class="logo">
+                    <a href="/Home"><img src="/Content/site/images/logo.png" alt="" /></a>
+                    
+
+                    <div class="search-box">
+
+                        <div id="sb-search" class="sb-search">
+                            <form method="post" action="/Home/POST/Search">
+                                <input class="sb-search-input" placeholder="Enter your search term..." type="wordsearch" name="wordsearch" id="wordsearch">
+                                <input class="sb-search-submit" type="submit" value="">
+                                <span class="sb-icon-search"> </span>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- search-scripts -->
+                <script src="~/Content/site/js/classie.js"></script>
+                <script src="~/Content/site/js/uisearch.js"></script>
+                <script>
+                    new UISearch(document.getElementById('sb-search'));
+                </script>
+
+                <div class="header-top-right">
+
+                    <!-- start search-->
+                  
+                    <!-- //search-scripts -->
+
+                    <a href="/Home/Carrinho"><i class="cart"></i></a>
+                    <a href="/Home/Wishlist"><i class="cart" style="background: url('/Content/site/images/document.png');"></i></a>
+                    <a href="/Home/Encomendas"><i class="cart" style="background: url('/Content/site/images/document.png');"></i></a>           
+                </div>
+                <div class="navigation">
+                    <div>
+                        <label class="mobile_menu" for="mobile_menu">
+                            <span>Menu</span>
+                        </label>
+                        <input id="mobile_menu" type="checkbox">
+                        <ul class="nav">
+                            <li class="dropdown1">
+                                <a href="#">Informática</a>
+                                <ul class="dropdown2">
+                                    <li><a href="/Home/Categoria/COMPUTADOR">Computadores</a></li>
+                                    <li><a href="/Home/Categoria/TABLETS">Tablets</a></li>
+                                    <li><a href="/Home/Categoria/PERIFERICO">Periféricos</a></li>
+                                    <li><a href="/Home/Categoria/ACESSORIO">Armazenamento</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown1">
+                                <a href="#">Imagem e Som</a>
+                                <ul class="dropdown2">
+                                    <li><a href="/Home/Categoria/TV">Televisores</a></li>
+                                    <li><a href="/Home/Categoria/AUDIO">Audio</a></li>
+                                    <li><a href="/Home/Categoria/FOTOVIDEO">Video</a></li>
+                                </ul>
+                            </li>
+                            </li>
+                            <li class="dropdown1">
+                                <a href="#">Comunicação</a>
+                                <ul class="dropdown2">
+                                    <li><a href="/Home/Categoria/TELEMOVEL">Telemóveis</a></li>
+                                    <li><a href="/Home/Categoria/GPS">GPS</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/Home/Contacto">Contacte-nos</a></li>
+                            <div class="clearfix"></div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @RenderBody()
+    <div class="footer">
+        <div class="up-arrow">
+            <a class="scroll" href="#home"><img src="" alt="" /></a>
+        </div>
+        <div class="container">
+            <div class="copyrights">
+                <p>Primavera © 2015 All rights reserved</p>
+            </div>
+            <div class="footer-social-icons">
+                <a href="#"><i class="fb"></i></a>
+                <a href="#"><i class="tw"></i></a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</body>
+</html>

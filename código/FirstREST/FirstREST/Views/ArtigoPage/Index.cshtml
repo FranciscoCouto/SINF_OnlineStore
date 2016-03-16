@@ -1,0 +1,182 @@
+﻿<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<body>
+    <!-- start-single-page -->
+    <!-- content -->
+    <div class="container">
+        <div class="dreamcrub">
+            <ul class="breadcrumbs">
+
+                <li class="home">
+                    <a href="index.html" title="Go to Home Page"><img src="/Content/site/images/home.png" alt="" /></a>&nbsp;
+                    <span>&gt;</span>
+                </li>
+                <li>
+                    Produto
+                </li>&nbsp;
+                <span>&gt;</span>
+                <li>products</a></li>
+            </ul>
+            <ul class="previous">
+                <li><a href="/Home/Artigos">Back to Previous Page</a></li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!-- start content -->
+    <div class="women_main">
+        <div class="container">
+
+            <div class="row single">
+                <div class="col-md-9 span-single">
+                    <div class="single_left">
+                        <div class="grid images_3_of_2">
+                            <ul id="etalage">
+                                <li>
+                                    <a href="optionallink.html">
+                                        <img class="etalage_thumb_image" src="/Content/site/images/products/@ViewBag.imagem" class="img-responsive" />
+                                        <img class="etalage_source_image" src="/Content/site/images/products/@ViewBag.imagem" class="img-responsive" title="" />
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="desc1 span_3_of_2">
+                            <h3>@ViewBag.Nome</h3>
+                            <p> @ViewBag.preco €</p>
+
+                            <div class="btn_form">
+                                @if (Session["name"] != null)
+                                {
+
+                                    if (ViewBag.stk != "0")
+                                    {
+                                        <br />
+                                        <button type="button" class="btn btn-success"><span>Stock Disponível</span></button>
+                                        <br />
+                                        <form method="post" action="/Home/POST/addCarrinho">
+                                            <input hidden name="idProduto" type="text" id="idProduto" value="@ViewBag.id" />
+                                            <button class="button1"><span>Adicionar ao Carrinho</span></button>
+                                        </form>
+                                        <form method="post" action="/Home/POST/addWishlist">
+                                            <input hidden name="idProduto" type="text" id="idProduto" value="@ViewBag.id" />
+                                            <button class="button1"><span>Adicionar à Wishlist</span></button>
+                                        </form>
+                                    }
+                                    else
+                                    {
+                                        <br />
+                                        <button type="button" class="btn btn-danger">Stock Indisponível</button>
+                                        <br />
+                                        <form method="post" action="/Home/POST/addWishlist">
+                                            <input hidden name="idProduto" type="text" id="idProduto" value="@ViewBag.id" />
+                                            <button class="button1"><span>Adicionar à Wishlist</span></button>
+                                        </form>
+                                    }
+
+
+
+
+
+
+                                }
+                                else
+                                {
+                                    <a href="/Home/Login">Login para comprar este Produto ou adiciona-lo à wishlist!</a>}
+                            </div>
+
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="single-bottom1">
+                        <h6>Descrição</h6>
+                        <p class="prod-desc"> @ViewBag.descricao </p>
+                    </div>
+
+                    <div class="single-bottom1">
+                        <h6>Comentários</h6>
+
+                        <div class="detailBox">
+                            <div class="titleBox">
+                                <label>Deixe aqui a sua opinião sobre o produto</label>
+                            </div>
+                            <div class="actionBox">
+                                @if (ViewBag.comentarios != null)
+                                {
+                                    foreach (var comentario in ViewBag.comentarios)
+                                    {
+                                        <ul class="commentList">
+                                            <li>
+                                                <div class="commenterImage">
+                                                    <img src="../../Images/teste.png" />
+                                                </div>
+                                                <div class="commentText">
+                                                    <p class="">@comentario.CDU_Conteudo</p>
+
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    }
+                                }
+                                @if (Session["name"] != null)
+                                {
+                                    <form class="form-inline" role="form" action="/Home/POST/addComentario" method="POST">
+                                        <div class="form-group">
+                                            <input hidden name="idProduto" type="text" id="idProduto" value="@ViewBag.id" />
+                                            <label for="inputComment" class="sr-only">Comentario</label>
+                                            @Html.TextBox("comment", "", new { type = "comment", id = "inputComment", Class = "form-control", placeholder = "comment" })
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-default">Adicionar</button>
+                                        </div>
+                                    </form>}
+                                else
+                                {
+                                    <br />
+                                    <button onclick="location.href = '/Home/Login';" class="btn btn-default">Login to comment!</button>
+                                    //<a href="/Home/Login">Login to comment!</a>
+                                }
+                            </div>
+                        </div>
+                        <br />
+                        <div class="single-bottom2">
+                            <h6>Produtos Relacionados</h6>
+                            @foreach (var artigo in ViewBag.artigos)
+                            {
+                                <div class="product">
+                                    <div class="product-desc">
+                                        <div class="product-img">
+                                            <img src="/Content/site/images/products/@artigo.CDU_Imagem" class="img-responsive " alt="" />
+                                        </div>
+                                        <div class="prod1-desc">
+                                            <h5><a class="product_link" href="/Home/Artigos/@artigo.ID">@artigo.Nome</a></h5>
+                                            <p class="product_descr"> @artigo.Descricao  </p>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="product_price">
+                                        <span class="price-access">€ @artigo.Preço</span>
+                                        <form method="post" action="/Home/POST/addCarrinho">
+                                            <input hidden name="idProduto" type="text" id="idProduto" value="@artigo.ID" />
+                                            <button class="button1"><span>Adicionar ao Carrinho</span></button>
+                                        </form>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end content -->
+        <!-- content-section-ends -->
+</body>
+</html>

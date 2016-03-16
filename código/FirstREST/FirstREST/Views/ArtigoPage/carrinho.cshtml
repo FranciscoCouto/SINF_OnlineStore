@@ -1,0 +1,115 @@
+﻿
+<!DOCTYPE html>
+<html>
+
+<body>
+    <!-- start Contact-page -->
+    <!-- content-section-starts -->
+    <br />
+    <div class="container">
+        <h1>Este carrinho pertence a: @ViewBag.Nome</h1>
+    </div>
+    <br />
+    <br />
+
+    @if (ViewBag.produtos == null)
+    {
+        <!--Response.Redirect("/Home/POST/Index");-->
+    }
+    else
+    {
+        foreach (var cart in ViewBag.produtos)
+        {
+    <!-- list of products in the cart -->
+            <div class="row">
+                <input type="hidden" name="idP" value="@cart.ID">
+                <ul class='item-list'>
+                    <li class='item'>
+                        <div class='item__information'>
+                            <div class='item__image'>
+                                <img src="/Content/site/images/products/@cart.CDU_Imagem">
+                            </div>
+                            <div class='item__body' style="margin-left:auto; margin-right:auto; width:800px; height: 120px; overflow-y: scroll;">
+                                <h2 class='item__title'>@cart.Nome</h2>
+                                <p class='item__description'>@cart.DescArtigo</p>
+                            </div>
+                            <div class='item__price' id="@cart.Nome + price">@cart.Preço €</div>
+                            <input type="hidden" id="@cart.Nome + price + Quantidade" value="@cart.Quantidade">
+                            <input type="hidden" id="@cart.Nome + hide" value="@cart.Preço">
+                            <div style="position:absolute;right:40px; top:40px;">
+                                <form action="/Home/POST/removeCarrinho" method="POST">
+                                    <input hidden name="idProduto" type="text" id="idProduto" value="@cart.ID" />
+                                    <input type="submit" class="btn btn-info" value="Remover Produto!" onclick="">
+                                </form>
+                            </div>
+                        </div>
+                        
+                        <div class='item__interactions'>
+                            <button class='item-increase' onclick="Increase('@cart.Nome');return false;">+</button>
+                            <button class='item-decrease' onclick="Decrease('@cart.Nome');return false;">-</button>
+                            <span id="@cart.Nome">@cart.Quantidade</span>
+                        </div>
+                                <form action="/Home/POST/atualizaCarrinho" method="POST">
+                                    <input name="idCarrinhoProduto" value="@cart.CDU_idCarrinhoProduto" hidden />
+                                    <input id="hidden @cart.Nome" name="Quantidade" value="1" hidden />
+                            
+                                    <p>Armazem: </p>
+                            <select name="Armazem">
+                                @foreach (var armazem in ViewBag.armazens)
+                                {
+                                   if (@cart.Armazem == @armazem.ID){
+                                        <option value="@armazem.ID" selected>@armazem.ID - @armazem.Localidade</option>
+                                    }
+                                    else { 
+                                    <option value="@armazem.ID">@armazem.ID - @armazem.Localidade</option>
+                                    }
+                                }
+                            </select>
+                            <div style="position:absolute;right:40px; top:80px;">
+                                <input type="submit" class="btn btn-info" value="Atualizar" onclick="">
+                                </div>
+                        </form>
+
+
+                    </li>
+                </ul>
+            </div>
+        }
+    }
+
+
+
+    <div class='summary js-summary'>
+        <ul class='steps'>
+            <li>
+                <b>Subtotal:</b>
+                <div class='sum'></div>
+            </li>
+            <li>
+                <b>IVA (23%):</b>
+                <span class='taxes'></span>
+                <b>€</b>
+            </li>
+        </ul>
+        <ul class='checkout'>
+            <li>
+                <b>Total:</b>
+                <span class='total js-total' id="checkoutt"></span>
+                <b>€</b>
+            </li>
+            <li id="checkout-bt">
+                <form action="/Home/POST/pagamento" method="post">
+                    <input hidden name="idCar" type="text" id="idCar" value="@ViewBag.idCar" />
+                    <button type="submit" class='button js-checkout-button'>Checkout</button>
+                </form>
+            </li>
+        </ul>
+    </div>
+
+    <!-- content-section-ends -->
+    <!-- Scripts -->
+    <script src="~/Scripts/auxx.js"></script>
+    <script src="~/Scripts/soma.js"></script>
+
+</body>
+</html>

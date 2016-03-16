@@ -1,0 +1,29 @@
+﻿<html>
+<body>
+        <div class="container">
+
+            <form class="form-signin" action='/Home/POST/Index' method='POST'>
+                <h2 class="form-signin-heading">Entre na sua conta!</h2>
+                <br />
+                <label for="inputEmail" class="sr-only">Username</label>
+                @Html.TextBox("Username", "", new { type = "name", id = "inputEmail", Class = "form-control", placeholder = "Username"})
+                <label for="inputPassword" class="sr-only">Password</label>
+                @Html.TextBox("Password", "", new {type="password", id="inputPassword", Class="form-control",placeholder="Password"})
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            </form>
+
+        </div> <!-- /container -->
+    <div class="container">
+        <div class="recommand-section">
+            <div class="recommand-section-head text-center">
+            </div>
+        </div>
+    </div>
+  
+</body>
+</html>

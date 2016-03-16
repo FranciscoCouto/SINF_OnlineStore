@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+
+<body>
+    <!-- start Contact-page -->
+    <!-- content-section-starts -->
+    <br />
+    <div class="container">
+        <h1>Wishlist de: @ViewBag.Nome</h1>
+    </div>
+    <br />
+    <br />
+    <div class="container">
+ 
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nome Produto</th>
+                    <th>Preço Produto</th>
+                    <th>STOCK</th>
+                    <th>Visitar a pagina do produto</th>
+                </tr>
+            </thead>
+            <tbody>
+        @foreach (var wishlist in ViewBag.Wishlist)
+                {
+                <tr>
+                    <td>@wishlist.Nome</td>
+                    <td>@wishlist.Preço €</td>
+                    <td>@wishlist.STKActual</td>
+                    <td> <a href="/Home/Artigos/@wishlist.ID">Visitar!</a></td>
+                </tr>
+}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- content-section-ends -->
+    <!-- Scripts -->
+    <script src="~/Scripts/auxx.js"></script>
+    <script src="~/Scripts/soma.js"></script>
+
+</body>
+</html>
+
